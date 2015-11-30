@@ -6,6 +6,9 @@
 %%% @end
 %%% Created : 11. Nov 2015 20:48
 %%%-------------------------------------------------------------------
+%%% How to run.
+%%%    c(concurrent). concurrent:load("hamlet.txt").
+%%%-------------------------------------------------------------------
 -module(concurrent).
 -author("Stuart Douglas").
 
@@ -56,17 +59,13 @@ receive
     if (N < Length - 1) ->
         J = join(L, MSG),
         receiver(J, N + 1, Length, Time);
-      %% If the connt N is the same as Length - 1 then we join and display the final count
+      %% If the count N is the same as Length - 1 then we join and display the final count
     (N == Length - 1) ->
       J = join(L, MSG),
       CompleteTime = timer:now_diff(os:timestamp(), Time) / 1000,
-
       io:fwrite("~nResult~n~p~nTime ~p~n", [J, CompleteTime])
     end
 end.
-
-
-
 
 join([],[])->[];
 join([],R)->R;

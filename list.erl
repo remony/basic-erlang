@@ -80,21 +80,15 @@ read(FILENAME) -> {ok, Device} = file:read_file(FILENAME),
 
 %% Main methods
 
-%% Show unique items in the given list
-  %% sort([2,5,3,6,3,2,7,8,5,6]).
-
+% Show unique items in list
 showUnique() -> listunique([2,5,3,6,3,2,7,8,5,6]).
+% Show unique count in list
 showUniqueCount() -> count(listunique([2,5,3,6,3,2,7,8,5,6])).
-%% Count the number of unique items in the list
-  %% app:count(app:listunique([2,5,3,6,3,2,7,8,5,6])).
 
-
-%% Extra Bonus
 
 %% Create list from file
 listFromFile(FILENAME) -> read(FILENAME).
 
 %% Read in file and get word count (including lowercase removal of bad chars)
-%%     Access:  c(app). app:getUniqueCountOf("hamlet.txt")
 getUniqueCountOf(FILENAME) -> listuniquecount(listlowercase(read(FILENAME))).
 
